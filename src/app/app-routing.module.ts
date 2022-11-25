@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { StockComponent } from './views/stock/stock.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/stock', pathMatch: 'full' },
+  //{ path: '', redirectTo: '/stock', pathMatch: 'full' },
   {
-    path: 'stock',
+    path: '',
     title: 'Stocks',
     component: StockComponent,
+    pathMatch: 'full',
   },
   //{ path: '**', component: PageNotFoundComponent }
 ];
