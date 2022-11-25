@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StockComponent } from './views/stock/stock/stock.component';
+import { StockComponent } from './views/stock/stock.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/stock', pathMatch: 'full' },
