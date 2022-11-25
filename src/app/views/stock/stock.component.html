@@ -1,23 +1,93 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8">
-          <p>Enter the symbol of a stock to track (i.e. - AAPL, TSLA, GOOGL)</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <input type="text" class="form-control" id="usr" />
-        </div>
-        <div class="col-sm-4">
-          <button class="btn btn-primary">click me</button>
+<div class="container">
+  <div style="margin-bottom: 50px; padding: 10px">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="d-flex p-2">
+          Enter the symbol of a stock to track (i.e. - AAPL, TSLA, GOOGL)
         </div>
       </div>
     </div>
-  </body>
-</html>
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="usr" />
+      </div>
+      <div class="col-sm-4">
+        <button class="btn btn-primary">Track Stock</button>
+      </div>
+    </div>
+  </div>
+  <div style="margin-bottom: 50px; padding: 10px">
+    <div class="card" style="width: 65rem; margin-bottom: 20px;">
+      <div class="card-body">
+        <button
+          type="button"
+          class="btn-close float-end"
+          aria-label="Close"
+        ></button>
+        <h5 class="card-title">TESLA INC</h5>
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-sm-4">
+            <div class="short-div" style="padding: 5px;">
+              <p class="card-text">Change Today : +5.6%</p>
+            </div>
+            <div class="short-div" style="padding: 5px;">
+              <p class="card-text">Current Price : $1,546</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="short-div" style="padding: 5px;">
+              <p class="card-text">Opening Price : $1,234</p>
+            </div>
+            <div class="short-div" style="padding: 5px;">
+              <p class="card-text">High Price : $1,522</p>
+            </div>
+          </div>
+          <div class="col-sm-4" style="padding: 10px;">
+            <h2 style="color: green;">&#8593;</h2>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-sm-4">
+            <a href="#" class="btn btn-primary">See sentiment details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="width: 65rem; margin-bottom: 20px;">
+      <div class="card-body">
+        <button
+          type="button"
+          class="btn-close float-end"
+          aria-label="Close"
+        ></button>
+        <h5 class="card-title">TESLA INC</h5>
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-sm-4">
+            <div class="short-div" style="padding: 5px;">
+              <p class="card-text">Change Today : +5.6%</p>
+            </div>
+            <div class="short-div" style="padding: 5px;">
+              <p class="card-text">Current Price : $1,546</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="short-div" style="padding: 5px;">
+              <p class="card-text">Opening Price : $1,234</p>
+            </div>
+            <div class="short-div" style="padding: 5px;">
+              <p class="card-text">High Price : $1,522</p>
+            </div>
+          </div>
+          <div class="col-sm-4" style="padding: 10px;">
+            <h2 style="color: red;">&#8595;</h2>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-sm-4">
+            <a href="#" class="btn btn-primary">See sentiment details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
