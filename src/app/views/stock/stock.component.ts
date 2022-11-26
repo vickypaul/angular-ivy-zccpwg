@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { stock } from '../../models/stock.model';
+import { Stock } from '../../models/stock.model';
 
 @Component({
   selector: 'app-stock',
@@ -17,7 +17,7 @@ export class StockComponent implements OnInit {
     console.log(this.storedStockAbbr);
   }
 
-  searchStock(postData: stock) {
+  searchStock(postData: Stock) {
     this.stockAbbr = postData.stockInput.toUpperCase();
     if (this.stockAbbr) {
       this.stockAbbrArray.push(this.stockAbbr);

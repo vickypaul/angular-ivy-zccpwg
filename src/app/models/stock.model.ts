@@ -1,3 +1,3 @@
-export interface stock {
+export interface Stock {
   stockInput: string;
 }
