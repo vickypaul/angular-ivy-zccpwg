@@ -21,6 +21,13 @@ export class StockComponent implements OnInit {
     arrowSymbol: string;
     arrowUnicode: string;
   }> = [];
+  cacheStockData: Array<{
+    stockAbbr: string;
+    stock: string;
+    stockData: Quote;
+    arrowSymbol: string;
+    arrowUnicode: string;
+  }> = [];
   arrowSymbolPosition: string;
   arrowUnicodeSymbol: string;
   constructor(
@@ -29,8 +36,12 @@ export class StockComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.storedStockAbbr = JSON.parse(localStorage.getItem('employees'));
-    console.log(this.storedStockAbbr);
+    this.storedStockAbbr = JSON.parse(localStorage.getItem('stockAbbr'));
+    this.cacheStockData = JSON.parse(localStorage.getItem('cacheStockData'));
+    if (this.cacheStockData) {
+      this.loadedStocks = this.cacheStockData;
+    }
+    console.log(this.cacheStockData);
   }
 
   searchStock(postData: { stockInput: string }) {
@@ -62,6 +73,10 @@ export class StockComponent implements OnInit {
           arrowSymbol: this.arrowSymbolPosition,
           arrowUnicode: this.arrowUnicodeSymbol,
         });
+        localStorage.setItem(
+          'cacheStockData',
+          JSON.stringify(this.loadedStocks)
+        );
         this.SpinnerService.hide();
         console.log(this.loadedStocks);
       });
