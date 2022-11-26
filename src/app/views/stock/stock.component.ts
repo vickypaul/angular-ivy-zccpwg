@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Stock } from '../../models/stock.model';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-stock',
@@ -10,7 +11,7 @@ export class StockComponent implements OnInit {
   stockAbbr: string;
   stockAbbrArray: Array<string> = [];
   storedStockAbbr: Array<string> = [];
-  constructor() {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     this.storedStockAbbr = JSON.parse(localStorage.getItem('employees'));

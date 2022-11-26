@@ -28,17 +28,13 @@ export class ApiService {
       })
       .pipe(
         map((responseData) => {
-          const postsArray: Post[] = [];
-          for (const key in responseData) {
-            if (responseData.hasOwnProperty(key)) {
-              postsArray.push({ ...responseData[key], id: key });
-            }
-          }
-          return postsArray;
-        }),
-        catchError((errorRes) => {
-          // Send to analytics server
-          return throwError(errorRes);
+          // const postsArray: Post[] = [];
+          // for (const key in responseData) {
+          //   if (responseData.hasOwnProperty(key)) {
+          //     postsArray.push({ ...responseData[key], id: key });
+          //   }
+          // }
+          // return postsArray;
         })
       );
   }
