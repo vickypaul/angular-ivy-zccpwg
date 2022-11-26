@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Quote } from '../../models/quote.model';
 import { zip } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-stock',
@@ -22,7 +23,10 @@ export class StockComponent implements OnInit {
   }> = [];
   arrowSymbolPosition: string;
   arrowUnicodeSymbol: string;
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private SpinnerService: NgxSpinnerService
+  ) {}
 
   ngOnInit() {
     this.storedStockAbbr = JSON.parse(localStorage.getItem('employees'));
@@ -32,6 +36,7 @@ export class StockComponent implements OnInit {
   searchStock(postData: { stockInput: string }) {
     this.stockAbbr = postData.stockInput.toUpperCase();
     if (this.stockAbbr) {
+      this.SpinnerService.show();
       //saving data in local storage
       this.stockAbbrArray.push(this.stockAbbr);
       localStorage.setItem('stockAbbr', JSON.stringify(this.stockAbbrArray));
@@ -57,6 +62,7 @@ export class StockComponent implements OnInit {
           arrowSymbol: this.arrowSymbolPosition,
           arrowUnicode: this.arrowUnicodeSymbol,
         });
+        this.SpinnerService.hide();
         console.log(this.loadedStocks);
       });
     }
