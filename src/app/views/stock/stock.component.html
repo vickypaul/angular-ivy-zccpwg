@@ -1,21 +1,24 @@
 <div class="container">
   <div style="margin-bottom: 50px; padding: 10px">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="d-flex p-2">
-          Enter the symbol of a stock to track (i.e. - AAPL, TSLA, GOOGL)
+    <form #postForm="ngForm">
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="d-flex p-2">
+            Enter the symbol of a stock to track (i.e. - AAPL, TSLA, GOOGL)
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row" style="margin-top: 20px;">
-      <div class="col-sm-4">
-        <input type="text" class="form-control" id="usr" />
+      <div class="row" style="margin-top: 20px;">
+        <div class="col-sm-4">
+          <input type="text" ngModel class="form-control" id="usr" name="usr" />
+        </div>
+        <div class="col-sm-4">
+          <button class="btn btn-primary">Track Stock</button>
+        </div>
       </div>
-      <div class="col-sm-4">
-        <button class="btn btn-primary">Track Stock</button>
-      </div>
-    </div>
+    </form>
   </div>
+
   <div style="margin-bottom: 50px; padding: 10px">
     <div class="card" style="width: 65rem; margin-bottom: 20px;">
       <div class="card-body">
