@@ -47,6 +47,7 @@
           id="{{ 'remove' + stock.stockAbbr }}"
           class="btn-close float-end"
           aria-label="Close"
+          (click)="removeStock($event)"
         ></button>
         <h5 class="card-title">{{ stock.stock }}</h5>
         <div class="row" style="margin-top: 10px;">

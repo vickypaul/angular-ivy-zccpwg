@@ -70,7 +70,7 @@ export class StockComponent implements OnInit {
 
         this.loadedStocks.push({
           stockAbbr: this.stockAbbr,
-          stock: stockName,
+          stock: stockName + ' (' + this.stockAbbr + ') ',
           stockData: stockData,
           arrowSymbol: this.arrowSymbolPosition,
           arrowUnicode: this.arrowUnicodeSymbol,
@@ -84,5 +84,21 @@ export class StockComponent implements OnInit {
         console.log(this.loadedStocks);
       });
     }
+  }
+
+  removeStock(event: Event): void {
+    let elementId: string = (event.target as Element).id;
+    let separator = 'remove';
+    let lastPart = elementId.split(separator).pop();
+    console.log(lastPart);
+    this.cacheStockData = JSON.parse(localStorage.getItem('cacheStockData'));
+    console.log(this.cacheStockData);
+    this.cacheStockData.forEach((value, key) => {
+      console.log(value);
+      console.log(key);
+      if (value.stockAbbr === lastPart) this.cacheStockData.splice(key, 1);
+      this.loadedStocks = this.cacheStockData;
+      localStorage.setItem('cacheStockData', JSON.stringify(this.loadedStocks));
+    });
   }
 }
