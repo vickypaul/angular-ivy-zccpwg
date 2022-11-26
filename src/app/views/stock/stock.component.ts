@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api.service';
 import { Quote } from '../../models/quote.model';
 import { zip } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-stock',
@@ -44,8 +45,9 @@ export class StockComponent implements OnInit {
     console.log(this.cacheStockData);
   }
 
-  searchStock(postData: { stockInput: string }) {
-    this.stockAbbr = postData.stockInput.toUpperCase();
+  searchStock(postData: NgForm) {
+    this.stockAbbr = postData.controls.stockInput.value.toUpperCase();
+    console.log(this.stockAbbr);
     if (this.stockAbbr) {
       this.SpinnerService.show();
       //saving data in local storage
@@ -77,6 +79,7 @@ export class StockComponent implements OnInit {
           'cacheStockData',
           JSON.stringify(this.loadedStocks)
         );
+        postData.reset();
         this.SpinnerService.hide();
         console.log(this.loadedStocks);
       });
