@@ -10,10 +10,26 @@
       </div>
       <div class="row" style="margin-top: 20px;">
         <div class="col-sm-4">
-          <input type="text" ngModel class="form-control" id="usr" name="usr" />
+          <input
+            type="text"
+            ngModel
+            class="form-control"
+            id="stockInput"
+            name="stockInput"
+            required
+            minlength="1"
+            maxlength="5"
+          />
         </div>
         <div class="col-sm-4">
-          <button class="btn btn-primary">Track Stock</button>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            id="trackBtn"
+            [disabled]="!postForm.valid"
+          >
+            Track Stock
+          </button>
         </div>
       </div>
     </form>

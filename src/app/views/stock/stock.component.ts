@@ -6,11 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stock.component.css'],
 })
 export class StockComponent implements OnInit {
+  stockAbbr: string;
   constructor() {}
 
   ngOnInit() {}
 
   trackStock(postData) {
-    // Send Http request
+    this.stockAbbr = postData.stockInput.toUpperCase();
+    console.log(this.stockAbbr);
   }
 }
