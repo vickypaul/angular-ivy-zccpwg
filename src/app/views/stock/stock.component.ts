@@ -27,7 +27,7 @@ export class StockComponent implements OnInit {
       //saving data in local storage
       this.stockAbbrArray.push(this.stockAbbr);
       localStorage.setItem(
-        'stockAbbrArray',
+        'stockAbbr',
         JSON.stringify(this.stockAbbrArray)
       );
 
