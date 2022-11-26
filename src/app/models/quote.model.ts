@@ -1,6 +1,7 @@
 export interface Quote {
-  d: string;
-  c: string;
-  o: string;
-  h: string;
+  d: number;
+  c: number;
+  o: number;
+  h: number;
+  dp: number;
 }

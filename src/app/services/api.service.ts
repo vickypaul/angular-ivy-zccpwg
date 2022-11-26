@@ -17,7 +17,6 @@ export class ApiService {
     let searchParams = new HttpParams();
     searchParams = searchParams.append('symbol', stockAbbr);
     searchParams = searchParams.append('token', environment.API_KEY);
-    console.log(searchParams);
     return this.http
       .get<Quote>(environment.QUOTE_ENDPOINT, {
         params: searchParams,
@@ -34,7 +33,6 @@ export class ApiService {
     let searchParams = new HttpParams();
     searchParams = searchParams.append('q', stockAbbr);
     searchParams = searchParams.append('token', environment.API_KEY);
-    console.log(searchParams);
     return this.http
       .get<SymbolLookup>(environment.SYMBOL_ENDPOINT, {
         params: searchParams,

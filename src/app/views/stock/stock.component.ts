@@ -13,8 +13,15 @@ export class StockComponent implements OnInit {
   stockAbbrArray: Array<string> = [];
   storedStockAbbr: Array<string> = [];
   quote: Quote;
-  loadedStocks: Array<{ stockAbbr: string; stock: string; stockData: Quote }> =
-    [];
+  loadedStocks: Array<{
+    stockAbbr: string;
+    stock: string;
+    stockData: Quote;
+    arrowSymbolUp: string;
+    arrowSymbolDwn: string;
+  }> = [];
+  upArrow: boolean = false;
+  arrowSymbol: string;
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
@@ -34,10 +41,21 @@ export class StockComponent implements OnInit {
         this.apiService.fetchStocks(this.stockAbbr),
         this.apiService.fetchStockName(this.stockAbbr)
       ).subscribe(([stockData, stockName]) => {
+        console.log(stockData);
+        if (stockData.dp > 0) {
+          this.upArrow = true;
+          this.arrowSymbol = '&#8593;';
+        } else {
+          this.upArrow = false;
+          this.arrowSymbol = '&#8595;';
+        }
+
         this.loadedStocks.push({
           stockAbbr: this.stockAbbr,
           stock: stockName,
           stockData: stockData,
+          arrowSymbolUp: this.arrowSymbol,
+          arrowSymbolDwn: this.arrowSymbol,
         });
         console.log(this.loadedStocks);
       });

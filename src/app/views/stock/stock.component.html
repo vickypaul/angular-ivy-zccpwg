@@ -65,9 +65,16 @@
               <p class="card-text">High Price : ${{ stock.stockData.h }}</p>
             </div>
           </div>
-          <div class="col-sm-4" style="padding: 10px;">
-            <h2 style="color: green;">&#8593;</h2>
+          <div class="col-sm-4" style="padding: 10px;" *ngIf="upArrow">
+            <h2 style="color: green;" [innerHTML]="arrowSymbolUp"></h2>
           </div>
+          <div class="col-sm-4" style="padding: 10px;" *ngIf="!upArrow">
+            <h2 style="color: red;" [innerHTML]="arrowSymbolDwn"></h2>
+          </div>
+          <!-- <ng-template #other_content
+            ><div class="col-sm-4" style="padding: 10px;">
+              <h2 style="color: red;" [innerHTML]="arrowSymbol"></h2></div
+          ></ng-template> -->
         </div>
         <div class="row" style="margin-top: 10px;">
           <div class="col-sm-4">
