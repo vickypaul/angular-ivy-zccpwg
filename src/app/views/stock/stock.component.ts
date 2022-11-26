@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { stock } from '../../models/stock.model';
 
 @Component({
   selector: 'app-stock',
@@ -7,12 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockComponent implements OnInit {
   stockAbbr: string;
+  stockAbbrArray: Array<string> = [];
+  storedStockAbbr: Array<string> = [];
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.storedStockAbbr = JSON.parse(localStorage.getItem('employees'));
+    console.log(this.storedStockAbbr);
+  }
 
-  trackStock(postData) {
+  searchStock(postData: stock) {
     this.stockAbbr = postData.stockInput.toUpperCase();
-    console.log(this.stockAbbr);
+    if (this.stockAbbr) {
+      this.stockAbbrArray.push(this.stockAbbr);
+      localStorage.setItem(
+        'stockAbbrArray',
+        JSON.stringify(this.stockAbbrArray)
+      );
+    }
   }
 }
