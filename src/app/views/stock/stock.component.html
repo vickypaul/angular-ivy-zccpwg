@@ -44,6 +44,7 @@
       <div class="card-body">
         <button
           type="button"
+          id="{{ 'remove' + stock.stockAbbr }}"
           class="btn-close float-end"
           aria-label="Close"
         ></button>
@@ -82,7 +83,10 @@
         </div>
         <div class="row" style="margin-top: 10px;">
           <div class="col-sm-4">
-            <a href="#" class="btn btn-primary"
+            <a
+              href="#"
+              class="btn btn-primary"
+              id="{{ 'sentiment' + stock.stockAbbr }}"
               >Go to social sentiment details >
             </a>
           </div>
