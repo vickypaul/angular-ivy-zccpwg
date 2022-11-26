@@ -1,3 +1,7 @@
 export interface Stock {
-  stockInput: string;
+  stockName: string;
+  changeToday: number;
+  currentPrice: number;
+  openingPrice: number;
+  highPrice: number;
 }

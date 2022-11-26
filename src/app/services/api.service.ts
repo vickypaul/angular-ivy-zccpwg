@@ -33,4 +33,21 @@ export class ApiService {
         })
       );
   }
+
+  fetchStockName(stockAbbr) {
+    let searchParams = new HttpParams();
+    searchParams = searchParams.append('q', stockAbbr);
+    searchParams = searchParams.append('token', environment.API_KEY);
+    console.log(searchParams);
+    return this.http
+      .get<Quote>(environment.SYMBOL_ENDPOINT, {
+        params: searchParams,
+        responseType: 'json',
+      })
+      .pipe(
+        map((responseData) => {
+          return responseData;
+        })
+      );
+  }
 }

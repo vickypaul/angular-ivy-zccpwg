@@ -36,7 +36,11 @@
   </div>
 
   <div style="margin-bottom: 50px; padding: 10px">
-    <div class="card" style="width: 65rem; margin-bottom: 20px;">
+    <div
+      class="card"
+      style="width: 65rem; margin-bottom: 20px;"
+      *ngFor="let stock of loadedStocks"
+    >
       <div class="card-body">
         <button
           type="button"
@@ -47,58 +51,22 @@
         <div class="row" style="margin-top: 10px;">
           <div class="col-sm-4">
             <div class="short-div" style="padding: 5px;">
-              <p class="card-text">Change Today : +5.6%</p>
+              <p class="card-text">Change Today : {{ stock.stockData.d }}</p>
             </div>
             <div class="short-div" style="padding: 5px;">
-              <p class="card-text">Current Price : $1,546</p>
+              <p class="card-text">Current Price : ${{ stock.stockData.c }}</p>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="short-div" style="padding: 5px;">
-              <p class="card-text">Opening Price : $1,234</p>
+              <p class="card-text">Opening Price : ${{ stock.stockData.o }}</p>
             </div>
             <div class="short-div" style="padding: 5px;">
-              <p class="card-text">High Price : $1,522</p>
+              <p class="card-text">High Price : ${{ stock.stockData.h }}</p>
             </div>
           </div>
           <div class="col-sm-4" style="padding: 10px;">
             <h2 style="color: green;">&#8593;</h2>
-          </div>
-        </div>
-        <div class="row" style="margin-top: 10px;">
-          <div class="col-sm-4">
-            <a href="#" class="btn btn-primary">See sentiment details</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card" style="width: 65rem; margin-bottom: 20px;">
-      <div class="card-body">
-        <button
-          type="button"
-          class="btn-close float-end"
-          aria-label="Close"
-        ></button>
-        <h5 class="card-title">TESLA INC</h5>
-        <div class="row" style="margin-top: 10px;">
-          <div class="col-sm-4">
-            <div class="short-div" style="padding: 5px;">
-              <p class="card-text">Change Today : +5.6%</p>
-            </div>
-            <div class="short-div" style="padding: 5px;">
-              <p class="card-text">Current Price : $1,546</p>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="short-div" style="padding: 5px;">
-              <p class="card-text">Opening Price : $1,234</p>
-            </div>
-            <div class="short-div" style="padding: 5px;">
-              <p class="card-text">High Price : $1,522</p>
-            </div>
-          </div>
-          <div class="col-sm-4" style="padding: 10px;">
-            <h2 style="color: red;">&#8595;</h2>
           </div>
         </div>
         <div class="row" style="margin-top: 10px;">
