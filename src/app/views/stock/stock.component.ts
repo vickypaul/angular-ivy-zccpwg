@@ -17,11 +17,11 @@ export class StockComponent implements OnInit {
     stockAbbr: string;
     stock: string;
     stockData: Quote;
-    arrowSymbolUp: string;
-    arrowSymbolDwn: string;
+    arrowSymbol: string;
+    arrowUnicode: string;
   }> = [];
-  upArrow: boolean = false;
-  arrowSymbol: string;
+  arrowSymbolPosition: string;
+  arrowUnicodeSymbol: string;
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
@@ -43,19 +43,19 @@ export class StockComponent implements OnInit {
       ).subscribe(([stockData, stockName]) => {
         console.log(stockData);
         if (stockData.dp > 0) {
-          this.upArrow = true;
-          this.arrowSymbol = '&#8593;';
+          this.arrowSymbolPosition = 'up';
+          this.arrowUnicodeSymbol = '&#8593;';
         } else {
-          this.upArrow = false;
-          this.arrowSymbol = '&#8595;';
+          this.arrowSymbolPosition = 'down';
+          this.arrowUnicodeSymbol = '&#8595;';
         }
 
         this.loadedStocks.push({
           stockAbbr: this.stockAbbr,
           stock: stockName,
           stockData: stockData,
-          arrowSymbolUp: this.arrowSymbol,
-          arrowSymbolDwn: this.arrowSymbol,
+          arrowSymbol: this.arrowSymbolPosition,
+          arrowUnicode: this.arrowUnicodeSymbol,
         });
         console.log(this.loadedStocks);
       });
