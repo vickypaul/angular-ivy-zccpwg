@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Subject, throwError } from 'rxjs';
 
 import { Quote } from '../models/quote.model';
 import { SymbolLookup } from '../models/symbol-lookup.model';
@@ -9,8 +8,6 @@ import { environment } from '../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  error = new Subject<string>();
-
   constructor(private http: HttpClient) {}
 
   fetchStocks(stockAbbr) {
