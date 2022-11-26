@@ -58,31 +58,38 @@ export class StockComponent implements OnInit {
       zip(
         this.apiService.fetchStocks(this.stockAbbr),
         this.apiService.fetchStockName(this.stockAbbr)
-      ).subscribe(([stockData, stockName]) => {
-        console.log(stockData);
-        if (stockData.dp > 0) {
-          this.arrowSymbolPosition = 'up';
-          this.arrowUnicodeSymbol = '&#8593;';
-        } else {
-          this.arrowSymbolPosition = 'down';
-          this.arrowUnicodeSymbol = '&#8595;';
-        }
+      ).subscribe(
+        ([stockData, stockName]) => {
+          console.log(stockData);
+          if (stockData.dp > 0) {
+            this.arrowSymbolPosition = 'up';
+            this.arrowUnicodeSymbol = '&#8593;';
+          } else {
+            this.arrowSymbolPosition = 'down';
+            this.arrowUnicodeSymbol = '&#8595;';
+          }
 
-        this.loadedStocks.push({
-          stockAbbr: this.stockAbbr,
-          stock: stockName + ' (' + this.stockAbbr + ') ',
-          stockData: stockData,
-          arrowSymbol: this.arrowSymbolPosition,
-          arrowUnicode: this.arrowUnicodeSymbol,
-        });
-        localStorage.setItem(
-          'cacheStockData',
-          JSON.stringify(this.loadedStocks)
-        );
-        postData.reset();
-        this.SpinnerService.hide();
-        console.log(this.loadedStocks);
-      });
+          this.loadedStocks.push({
+            stockAbbr: this.stockAbbr,
+            stock: stockName + ' (' + this.stockAbbr + ') ',
+            stockData: stockData,
+            arrowSymbol: this.arrowSymbolPosition,
+            arrowUnicode: this.arrowUnicodeSymbol,
+          });
+          localStorage.setItem(
+            'cacheStockData',
+            JSON.stringify(this.loadedStocks)
+          );
+          postData.reset();
+          this.SpinnerService.hide();
+          console.log(this.loadedStocks);
+        },
+        (error) => {
+          postData.reset();
+          this.SpinnerService.hide();
+          console.log(error);
+        }
+      );
     }
   }
 
