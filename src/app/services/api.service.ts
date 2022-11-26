@@ -9,6 +9,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 import { Subject, throwError } from 'rxjs';
 
 import { Quote } from '../models/quote.model';
+import { environment } from '../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -16,25 +17,19 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  fetchStocks() {
+  fetchStocks(stockAbbr) {
     let searchParams = new HttpParams();
-    searchParams = searchParams.append('print', 'pretty');
-    searchParams = searchParams.append('custom', 'key');
+    searchParams = searchParams.append('symbol', stockAbbr);
+    searchParams = searchParams.append('token', environment.API_KEY);
+    console.log(searchParams);
     return this.http
-      .get<Quote>('https://ng-complete-guide-c56d3.firebaseio.com/posts.json', {
-        headers: new HttpHeaders({ 'Custom-Header': 'Hello' }),
+      .get<Quote>(environment.QUOTE_ENDPOINT, {
         params: searchParams,
         responseType: 'json',
       })
       .pipe(
         map((responseData) => {
-          // const postsArray: Post[] = [];
-          // for (const key in responseData) {
-          //   if (responseData.hasOwnProperty(key)) {
-          //     postsArray.push({ ...responseData[key], id: key });
-          //   }
-          // }
-          // return postsArray;
+          return responseData;
         })
       );
   }

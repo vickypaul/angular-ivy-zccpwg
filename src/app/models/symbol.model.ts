@@ -1,3 +1,3 @@
 export interface CompanyName {
-  companyName: string;
+  description: string;
 }
