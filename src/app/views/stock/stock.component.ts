@@ -9,4 +9,8 @@ export class StockComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  trackStock(postData) {
+    // Send Http request
+  }
 }
