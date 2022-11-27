@@ -96,9 +96,7 @@ export class StockComponent implements OnInit {
     let elementId: string = (event.target as Element).id;
     let separator = 'remove';
     let lastPart = elementId.split(separator).pop();
-    console.log(lastPart);
     this.cacheStockData = JSON.parse(localStorage.getItem('cacheStockData'));
-    console.log(this.cacheStockData);
     this.cacheStockData.map((value, key) => {
       if (value.stockAbbr === lastPart) this.cacheStockData.splice(key, 1);
       this.loadedStocks = this.cacheStockData;
@@ -112,7 +110,6 @@ export class StockComponent implements OnInit {
         return;
       }
     });
-    console.log(this.storedStockAbbr);
     this.stockAbbrArray = this.storedStockAbbr;
     localStorage.setItem('stockAbbr', JSON.stringify(this.storedStockAbbr));
   }
