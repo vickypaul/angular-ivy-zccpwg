@@ -71,7 +71,6 @@ export class StockComponent implements OnInit {
             this.arrowSymbolPosition = 'down';
             this.arrowUnicodeSymbol = '&#8595;';
           }
-
           this.loadedStocks.push({
             stockAbbr: this.stockAbbr,
             stock: stockName + ' (' + this.stockAbbr + ') ',
