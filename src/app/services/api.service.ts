@@ -20,11 +20,6 @@ export class ApiService {
         params: searchParams,
         responseType: 'json',
       })
-      .pipe(
-        map((responseData) => {
-          return responseData;
-        })
-      );
   }
 
   fetchStockName(stockAbbr) {
@@ -64,10 +59,5 @@ export class ApiService {
         params: searchParams,
         responseType: 'json',
       })
-      .pipe(
-        map((responseData) => {
-          return responseData;
-        })
-      );
   }
 }
