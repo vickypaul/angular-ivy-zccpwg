@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { Quote } from '../models/quote.model';
-import { SymbolLookup } from '../models/symbol-lookup.model';
+import { SymbolLookup } from '../models/symbolLookup.model';
 import { Sentiment } from '../models/sentiment.model';
 import { environment } from '../environments/environment';
 

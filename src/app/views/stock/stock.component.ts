@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Quote } from '../../models/quote.model';
+import { LoadedStocks } from '../../models/loadedStocks.model';
 import { zip } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NgForm } from '@angular/forms';
@@ -15,20 +16,8 @@ export class StockComponent implements OnInit {
   stockAbbrArray: Array<string> = [];
   storedStockAbbr: Array<string> = [];
   quote: Quote;
-  loadedStocks: Array<{
-    stockAbbr: string;
-    stock: string;
-    stockData: Quote;
-    arrowSymbol: string;
-    arrowUnicode: string;
-  }> = [];
-  cacheStockData: Array<{
-    stockAbbr: string;
-    stock: string;
-    stockData: Quote;
-    arrowSymbol: string;
-    arrowUnicode: string;
-  }> = [];
+  loadedStocks: Array<LoadedStocks> = [];
+  cacheStockData: Array<LoadedStocks> = [];
   arrowSymbolPosition: string;
   arrowUnicodeSymbol: string;
   constructor(
