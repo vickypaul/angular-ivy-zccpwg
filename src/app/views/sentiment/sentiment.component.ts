@@ -37,6 +37,24 @@ export class SentimentComponent implements OnInit {
       });
   }
 
+  getMonth(monthNumber) {
+    var monthNames = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    return monthNames[monthNumber - 1];
+  }
+
   goBacktoStock() {
     this.router.navigate(['']);
   }
