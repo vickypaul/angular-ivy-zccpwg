@@ -1,5 +1,5 @@
 <div class="container">
-  <div style="margin-bottom: 50px; padding: 10px">
+  <div class="main-div">
     <form #stockForm="ngForm" (ngSubmit)="searchStock(stockForm)">
       <div class="row">
         <div class="col-sm-8">
@@ -8,7 +8,7 @@
           </div>
         </div>
       </div>
-      <div class="row" style="margin-top: 20px;">
+      <div class="row div-margin-top-20">
         <div class="col-sm-4">
           <input
             type="text"
@@ -35,12 +35,8 @@
     </form>
   </div>
 
-  <div style="margin-bottom: 50px; padding: 10px">
-    <div
-      class="card"
-      style="width: 65rem; margin-bottom: 20px;"
-      *ngFor="let stock of loadedStocks"
-    >
+  <div class="main-div">
+    <div class="card card-div" *ngFor="let stock of loadedStocks">
       <div class="card-body">
         <button
           type="button"
@@ -50,9 +46,9 @@
           (click)="removeStock($event)"
         ></button>
         <h5 class="card-title">{{ stock.stock }}</h5>
-        <div class="row" style="margin-top: 10px;">
+        <div class="row div-margin-top-10">
           <div class="col-sm-4">
-            <div class="short-div" style="padding: 5px;">
+            <div class="short-div div-padding-5">
               <p class="card-text">
                 Change Today :
                 {{
@@ -63,40 +59,29 @@
                 %
               </p>
             </div>
-            <div class="short-div" style="padding: 5px;">
+            <div class="short-div div-padding-5">
               <p class="card-text">Current Price : ${{ stock.stockData.c }}</p>
             </div>
           </div>
           <div class="col-sm-4">
-            <div class="short-div" style="padding: 5px;">
+            <div class="short-div div-padding-5">
               <p class="card-text">Opening Price : ${{ stock.stockData.o }}</p>
             </div>
-            <div class="short-div" style="padding: 5px;">
+            <div class="short-div div-padding-5">
               <p class="card-text">High Price : ${{ stock.stockData.h }}</p>
             </div>
           </div>
-          <div
-            class="col-sm-4"
-            style="padding: 10px;"
-            *ngIf="stock.arrowSymbol == 'up'"
-          >
-            <h2
-              style="color: green; font-size: 50px;"
-              [innerHTML]="stock.arrowUnicode"
-            ></h2>
+          <div class="col-sm-4 div-padding-5" *ngIf="stock.arrowSymbol == 'up'">
+            <h2 class="green-arrow" [innerHTML]="stock.arrowUnicode"></h2>
           </div>
           <div
-            class="col-sm-4"
-            style="padding: 10px;"
+            class="col-sm-4 div-padding-5"
             *ngIf="stock.arrowSymbol == 'down'"
           >
-            <h2
-              style="color: red; font-size: 50px;"
-              [innerHTML]="stock.arrowUnicode"
-            ></h2>
+            <h2 class="red-arrow" [innerHTML]="stock.arrowUnicode"></h2>
           </div>
         </div>
-        <div class="row" style="margin-top: 10px;">
+        <div class="row div-margin-top-10">
           <div class="col-sm-4">
             <a
               routerLink="/sentiment/{{ stock.stockAbbr }}"
@@ -118,5 +103,5 @@
   color="#fff"
   type="ball-scale-multiple"
 >
-  <p style="font-size: 20px; color: white">Loading...</p>
+  <p class="spinner">Loading...</p>
 </ngx-spinner>
