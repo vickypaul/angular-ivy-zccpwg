@@ -41,4 +41,34 @@ export class ApiService {
         })
       );
   }
+
+  fetchSentimentDetails(stockAbbr) {
+    let startDate =
+      new Date().getFullYear().toString() +
+      '-' +
+      ('0' + (new Date().getMonth() - 2).toString()).slice(-2) +
+      '-01';
+    let endDate =
+      new Date().getFullYear().toString() +
+      '-' +
+      ('0' + new Date().getMonth().toString()).slice(-2) +
+      '-01';
+    console.log(startDate);
+    console.log(endDate);
+    let searchParams = new HttpParams();
+    searchParams = searchParams.append('symbol', stockAbbr);
+    searchParams = searchParams.append('from', startDate);
+    searchParams = searchParams.append('to', endDate);
+    searchParams = searchParams.append('token', environment.API_KEY);
+    return this.http
+      .get<SymbolLookup>(environment.SENTIMENT_ENDPOINT, {
+        params: searchParams,
+        responseType: 'json',
+      })
+      .pipe(
+        map((responseData) => {
+          return responseData;
+        })
+      );
+  }
 }
