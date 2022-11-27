@@ -24,7 +24,6 @@ export class SentimentComponent implements OnInit {
     this.SpinnerService.show();
     this.stockName = localStorage.getItem('stockName');
     this.stockAbbr = this._activatedRoute.snapshot.params.symbol;
-    console.log(this.stockAbbr);
     this.getSentimentDetails();
   }
 
@@ -32,7 +31,6 @@ export class SentimentComponent implements OnInit {
     this.apiService
       .fetchSentimentDetails(this.stockAbbr)
       .subscribe((details) => {
-        console.log(details);
         this.isSentimentDataLoaded = true;
         this.SpinnerService.hide();
         this.sentimentData = details;

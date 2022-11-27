@@ -34,12 +34,10 @@ export class StockComponent implements OnInit {
     if (this.cacheStockData) {
       this.loadedStocks = this.cacheStockData;
     }
-    console.log(this.cacheStockData);
   }
 
   searchStock(postData: NgForm) {
     this.stockAbbr = postData.controls.stockInput.value.toUpperCase();
-    console.log(this.stockAbbr);
     if (this.stockAbbr) {
       this.SpinnerService.show();
       //checking if stock already searched
@@ -60,7 +58,6 @@ export class StockComponent implements OnInit {
         this.apiService.fetchStockName(this.stockAbbr)
       ).subscribe(
         ([stockData, stockName]) => {
-          console.log(stockData);
           if (stockData.dp > 0) {
             this.arrowSymbolPosition = 'up';
             this.arrowUnicodeSymbol = '&#8593;';
@@ -81,12 +78,10 @@ export class StockComponent implements OnInit {
           );
           postData.reset();
           this.SpinnerService.hide();
-          console.log(this.loadedStocks);
         },
         (error) => {
           postData.reset();
           this.SpinnerService.hide();
-          console.log(error);
         }
       );
     }
