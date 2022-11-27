@@ -16,14 +16,22 @@
                 </p>
               </div>
               <div class="short-div" style="padding: 5px;">
-                <p class="card-text">Change : {{ data.change }}</p>
+                <p class="card-text">
+                  Change :
+                  {{ data.change > 0 ? '+' + data.change : data.change }}
+                </p>
               </div>
               <div class="short-div" style="padding: 5px;">
-                <p class="card-text">MSPR : {{ data.mspr }}</p>
+                <p class="card-text">
+                  MSPR : {{ data.mspr | number: '2.2-2' }}
+                </p>
               </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-2" *ngIf="data.change > 0">
               <h2 style="color: green; font-size: 50px;">&#8593;</h2>
+            </div>
+            <div class="col-sm-2" *ngIf="data.change < 0">
+              <h2 style="color: red; font-size: 50px;">&#8595;</h2>
             </div>
           </ng-container>
         </div>
