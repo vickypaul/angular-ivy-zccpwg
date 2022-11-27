@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StockComponent } from './views/stock/stock.component';
+import { SentimentComponent } from './views/sentiment/sentiment.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
@@ -19,7 +20,12 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HttpClientModule,
     NgxSpinnerModule,
   ],
-  declarations: [AppComponent, HelloComponent, StockComponent],
+  declarations: [
+    AppComponent,
+    HelloComponent,
+    StockComponent,
+    SentimentComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
