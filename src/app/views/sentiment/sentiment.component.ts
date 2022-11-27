@@ -12,6 +12,7 @@ export class SentimentComponent implements OnInit {
   stockAbbr: string;
   sentimentData: object;
   isSentimentDataLoaded: boolean = false;
+  stockName: string;
   constructor(
     private _activatedRoute: ActivatedRoute,
     private router: Router,
@@ -21,6 +22,7 @@ export class SentimentComponent implements OnInit {
 
   ngOnInit() {
     this.SpinnerService.show();
+    this.stockName = localStorage.getItem('stockName');
     this.stockAbbr = this._activatedRoute.snapshot.params.symbol;
     console.log(this.stockAbbr);
     this.getSentimentDetails();

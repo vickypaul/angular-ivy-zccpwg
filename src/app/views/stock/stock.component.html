@@ -94,6 +94,7 @@
               routerLink="/sentiment/{{ stock.stockAbbr }}"
               class="btn btn-primary"
               id="{{ 'sentiment' + stock.stockAbbr }}"
+              (click)="seStockName(stock.stock)"
               >Go to social sentiment details >
             </a>
           </div>

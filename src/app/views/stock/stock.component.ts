@@ -111,4 +111,8 @@ export class StockComponent implements OnInit {
       localStorage.setItem('cacheStockData', JSON.stringify(this.loadedStocks));
     });
   }
+
+  seStockName(stockName) {
+    localStorage.setItem('stockName', stockName);
+  }
 }
