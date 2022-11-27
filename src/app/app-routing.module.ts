@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SentimentComponent } from './views/sentiment/sentiment.component';
 import { StockComponent } from './views/stock/stock.component';
 
 const routes: Routes = [
@@ -9,7 +10,12 @@ const routes: Routes = [
     component: StockComponent,
     pathMatch: 'full',
   },
-  //{ path: '**', component: PageNotFoundComponent }
+  {
+    path: 'sentiment/:symbol',
+    component: SentimentComponent,
+    pathMatch: 'full',
+  },
+  { path: '**', component: StockComponent },
 ];
 
 @NgModule({
