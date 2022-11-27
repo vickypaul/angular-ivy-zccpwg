@@ -3,22 +3,28 @@
     <div class="card" style="width: 65rem; margin-bottom: 20px;">
       <div class="card-body">
         <h5 class="card-title">TESLA INC (TSLA)</h5>
-        <div class="row" style="margin-top: 10px;">
-          <div class="col-sm-2">
-            <div class="short-div" style="padding: 5px;">
-              <p class="card-text">JANUARY</p>
+        <div
+          class="row"
+          style="margin-top: 10px;"
+          *ngIf="isSentimentDataLoaded"
+        >
+          <ng-container *ngFor="let data of sentimentData['data']">
+            <div class="col-sm-2">
+              <div class="short-div" style="padding: 5px;">
+                <p class="card-text">JANUARY</p>
+              </div>
+              <div class="short-div" style="padding: 5px;">
+                <p class="card-text">Change : -150</p>
+              </div>
+              <div class="short-div" style="padding: 5px;">
+                <p class="card-text">MSPR : 12.56</p>
+              </div>
             </div>
-            <div class="short-div" style="padding: 5px;">
-              <p class="card-text">Change : -150</p>
+            <div class="col-sm-2">
+              <h2 style="color: green; font-size: 50px;">&#8593;</h2>
             </div>
-            <div class="short-div" style="padding: 5px;">
-              <p class="card-text">MSPR : 12.56</p>
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <h2 style="color: green; font-size: 50px;">&#8593;</h2>
-          </div>
-          <div class="col-sm-2">
+          </ng-container>
+          <!-- <div class="col-sm-2">
             <div class="short-div" style="padding: 5px;">
               <p class="card-text">JANUARY</p>
             </div>
@@ -31,8 +37,8 @@
           </div>
           <div class="col-sm-2">
             <h2 style="color: red; font-size: 50px;">&#8595;</h2>
-          </div>
-          <div class="col-sm-2">
+          </div> -->
+          <!-- <div class="col-sm-2">
             <div class="short-div" style="padding: 5px;">
               <p class="card-text">JANUARY</p>
             </div>
@@ -45,7 +51,7 @@
           </div>
           <div class="col-sm-2">
             <h2 style="color: green; font-size: 50px;">&#8593;</h2>
-          </div>
+          </div> -->
         </div>
         <div class="row" style="margin-top: 10px;">
           <div class="col-sm-4">
@@ -58,3 +64,12 @@
     </div>
   </div>
 </div>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

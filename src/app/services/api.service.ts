@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { Quote } from '../models/quote.model';
 import { SymbolLookup } from '../models/symbol-lookup.model';
-import { Sentiment } from '../../models/sentiment.model';
+import { Sentiment } from '../models/sentiment.model';
 import { environment } from '../environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -54,8 +54,6 @@ export class ApiService {
       '-' +
       ('0' + new Date().getMonth().toString()).slice(-2) +
       '-01';
-    console.log(startDate);
-    console.log(endDate);
     let searchParams = new HttpParams();
     searchParams = searchParams.append('symbol', stockAbbr);
     searchParams = searchParams.append('from', startDate);

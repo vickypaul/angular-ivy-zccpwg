@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-sentiment',
@@ -9,13 +10,17 @@ import { ApiService } from '../../services/api.service';
 })
 export class SentimentComponent implements OnInit {
   stockAbbr: string;
+  sentimentData: object;
+  isSentimentDataLoaded: boolean = false;
   constructor(
     private _activatedRoute: ActivatedRoute,
     private router: Router,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private SpinnerService: NgxSpinnerService
   ) {}
 
   ngOnInit() {
+    this.SpinnerService.show();
     this.stockAbbr = this._activatedRoute.snapshot.params.symbol;
     console.log(this.stockAbbr);
     this.getSentimentDetails();
@@ -26,6 +31,9 @@ export class SentimentComponent implements OnInit {
       .fetchSentimentDetails(this.stockAbbr)
       .subscribe((details) => {
         console.log(details);
+        this.isSentimentDataLoaded = true;
+        this.SpinnerService.hide();
+        this.sentimentData = details;
       });
   }
 
