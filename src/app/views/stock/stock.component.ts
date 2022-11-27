@@ -42,6 +42,14 @@ export class StockComponent implements OnInit {
     console.log(this.stockAbbr);
     if (this.stockAbbr) {
       this.SpinnerService.show();
+      //checking if stock already searched
+      let storedStockAbbrLocal = JSON.parse(localStorage.getItem('stockAbbr'));
+      if (storedStockAbbrLocal.includes(this.stockAbbr)) {
+        postData.reset();
+        this.SpinnerService.hide();
+        return;
+      }
+
       //saving data in local storage
       this.stockAbbrArray.push(this.stockAbbr);
       localStorage.setItem('stockAbbr', JSON.stringify(this.stockAbbrArray));
