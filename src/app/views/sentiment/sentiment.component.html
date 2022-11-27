@@ -1,41 +1,37 @@
 <div class="container">
-  <div style="margin-bottom: 50px; padding: 10px">
-    <div class="card" style="width: 65rem; margin-bottom: 20px;">
+  <div class="main-div">
+    <div class="card card-div">
       <div class="card-body">
         <h5 class="card-title">{{ stockName }}</h5>
-        <div
-          class="row"
-          style="margin-top: 10px;"
-          *ngIf="isSentimentDataLoaded"
-        >
+        <div class="row div-margin-top-10" *ngIf="isSentimentDataLoaded">
           <ng-container *ngFor="let data of sentimentData['data']">
             <div class="col-sm-2">
-              <div class="short-div" style="padding: 5px;">
+              <div class="short-div div-padding-5">
                 <p class="card-text">
                   {{ getMonth(data.month) | uppercase }}
                 </p>
               </div>
-              <div class="short-div" style="padding: 5px;">
+              <div class="short-div div-padding-5">
                 <p class="card-text">
                   Change :
                   {{ data.change > 0 ? '+' + data.change : data.change }}
                 </p>
               </div>
-              <div class="short-div" style="padding: 5px;">
+              <div class="short-div div-padding-5">
                 <p class="card-text">
                   MSPR : {{ data.mspr | number: '1.2-2' }}
                 </p>
               </div>
             </div>
             <div class="col-sm-2" *ngIf="data.change > 0">
-              <h2 style="color: green; font-size: 50px;">&#8593;</h2>
+              <h2 class="green-arrow">&#8593;</h2>
             </div>
             <div class="col-sm-2" *ngIf="data.change < 0">
-              <h2 style="color: red; font-size: 50px;">&#8595;</h2>
+              <h2 class="red-arrow">&#8595;</h2>
             </div>
           </ng-container>
         </div>
-        <div class="row" style="margin-top: 10px;">
+        <div class="row div-margin-top-10">
           <div class="col-sm-4">
             <a class="btn btn-primary" id="backBtn" (click)="goBacktoStock()"
               >< Back to list of stocks</a
@@ -53,5 +49,5 @@
   color="#fff"
   type="ball-scale-multiple"
 >
-  <p style="font-size: 20px; color: white">Loading...</p>
+  <p class="spinner">Loading...</p>
 </ngx-spinner>

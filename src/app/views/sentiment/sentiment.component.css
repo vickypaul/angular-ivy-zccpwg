@@ -1,0 +1,26 @@
+.div-padding-5 {
+  padding: 5px;
+}
+.div-margin-top-10 {
+  margin-top: 10px;
+}
+.card-div {
+  width: 65rem;
+  margin-bottom: 20px;
+}
+.main-div {
+  margin-bottom: 50px;
+  padding: 10px;
+}
+.green-arrow {
+  color: green;
+  font-size: 50px;
+}
+.red-arrow {
+  color: red;
+  font-size: 50px;
+}
+.spinner {
+  font-size: 20px;
+  color: white;
+}
