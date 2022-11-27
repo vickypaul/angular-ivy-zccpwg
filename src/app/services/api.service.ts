@@ -15,11 +15,10 @@ export class ApiService {
     let searchParams = new HttpParams();
     searchParams = searchParams.append('symbol', stockAbbr);
     searchParams = searchParams.append('token', environment.API_KEY);
-    return this.http
-      .get<Quote>(environment.QUOTE_ENDPOINT, {
-        params: searchParams,
-        responseType: 'json',
-      })
+    return this.http.get<Quote>(environment.QUOTE_ENDPOINT, {
+      params: searchParams,
+      responseType: 'json',
+    });
   }
 
   fetchStockName(stockAbbr) {
@@ -43,21 +42,22 @@ export class ApiService {
       new Date().getFullYear().toString() +
       '-' +
       ('0' + (new Date().getMonth() - 2).toString()).slice(-2) +
-      '-01';
+      '-' +
+      ('0' + new Date().getDate().toString()).slice(-2);
     let endDate =
       new Date().getFullYear().toString() +
       '-' +
-      ('0' + new Date().getMonth().toString()).slice(-2) +
-      '-01';
+      ('0' + (new Date().getMonth() + 1).toString()).slice(-2) +
+      '-' +
+      ('0' + new Date().getDate().toString()).slice(-2);
     let searchParams = new HttpParams();
     searchParams = searchParams.append('symbol', stockAbbr);
     searchParams = searchParams.append('from', startDate);
     searchParams = searchParams.append('to', endDate);
     searchParams = searchParams.append('token', environment.API_KEY);
-    return this.http
-      .get<Sentiment>(environment.SENTIMENT_ENDPOINT, {
-        params: searchParams,
-        responseType: 'json',
-      })
+    return this.http.get<Sentiment>(environment.SENTIMENT_ENDPOINT, {
+      params: searchParams,
+      responseType: 'json',
+    });
   }
 }
