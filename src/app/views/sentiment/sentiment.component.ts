@@ -37,7 +37,7 @@ export class SentimentComponent implements OnInit {
       });
   }
 
-  getMonth(monthNumber) {
+  getMonth(monthNumber: number) {
     var monthNames = [
       'January',
       'February',

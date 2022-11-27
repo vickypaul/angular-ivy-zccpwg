@@ -109,7 +109,7 @@ export class StockComponent implements OnInit {
     localStorage.setItem('stockAbbr', JSON.stringify(this.storedStockAbbr));
   }
 
-  seStockName(stockName) {
+  seStockName(stockName: string) {
     localStorage.setItem('stockName', stockName);
   }
 }

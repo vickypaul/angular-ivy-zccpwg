@@ -11,7 +11,7 @@ import { environment } from '../environments/environment';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  fetchStocks(stockAbbr) {
+  fetchStocks(stockAbbr: string) {
     let searchParams = new HttpParams();
     searchParams = searchParams.append('symbol', stockAbbr);
     searchParams = searchParams.append('token', environment.API_KEY);
@@ -21,7 +21,7 @@ export class ApiService {
     });
   }
 
-  fetchStockName(stockAbbr) {
+  fetchStockName(stockAbbr: string) {
     let searchParams = new HttpParams();
     searchParams = searchParams.append('q', stockAbbr);
     searchParams = searchParams.append('token', environment.API_KEY);
@@ -37,7 +37,7 @@ export class ApiService {
       );
   }
 
-  fetchSentimentDetails(stockAbbr) {
+  fetchSentimentDetails(stockAbbr: string) {
     let startDate =
       new Date().getFullYear().toString() +
       '-' +
