@@ -38,6 +38,9 @@ export class StockComponent implements OnInit {
 
   ngOnInit() {
     this.storedStockAbbr = JSON.parse(localStorage.getItem('stockAbbr'));
+    if (this.storedStockAbbr) {
+      this.stockAbbrArray = this.storedStockAbbr;
+    }
     this.cacheStockData = JSON.parse(localStorage.getItem('cacheStockData'));
     if (this.cacheStockData) {
       this.loadedStocks = this.cacheStockData;
