@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { Quote } from '../models/quote.model';
 import { SymbolLookup } from '../models/symbol-lookup.model';
+import { Sentiment } from '../../models/sentiment.model';
 import { environment } from '../environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -61,7 +62,7 @@ export class ApiService {
     searchParams = searchParams.append('to', endDate);
     searchParams = searchParams.append('token', environment.API_KEY);
     return this.http
-      .get<SymbolLookup>(environment.SENTIMENT_ENDPOINT, {
+      .get<Sentiment>(environment.SENTIMENT_ENDPOINT, {
         params: searchParams,
         responseType: 'json',
       })
