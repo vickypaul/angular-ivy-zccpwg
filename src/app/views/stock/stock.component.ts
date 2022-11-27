@@ -103,13 +103,22 @@ export class StockComponent implements OnInit {
     console.log(lastPart);
     this.cacheStockData = JSON.parse(localStorage.getItem('cacheStockData'));
     console.log(this.cacheStockData);
-    this.cacheStockData.forEach((value, key) => {
-      console.log(value);
-      console.log(key);
+    this.cacheStockData.map((value, key) => {
       if (value.stockAbbr === lastPart) this.cacheStockData.splice(key, 1);
       this.loadedStocks = this.cacheStockData;
       localStorage.setItem('cacheStockData', JSON.stringify(this.loadedStocks));
     });
+
+    this.storedStockAbbr = JSON.parse(localStorage.getItem('stockAbbr'));
+    this.storedStockAbbr.map((value, key) => {
+      if (value == lastPart) {
+        this.storedStockAbbr.splice(key, 1);
+        return;
+      }
+    });
+    console.log(this.storedStockAbbr);
+    this.stockAbbrArray = this.storedStockAbbr;
+    localStorage.setItem('stockAbbr', JSON.stringify(this.storedStockAbbr));
   }
 
   seStockName(stockName) {
