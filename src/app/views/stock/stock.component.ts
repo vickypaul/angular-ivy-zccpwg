@@ -42,7 +42,7 @@ export class StockComponent implements OnInit {
       this.SpinnerService.show();
       //checking if stock already searched
       let storedStockAbbrLocal = JSON.parse(localStorage.getItem('stockAbbr'));
-      if (storedStockAbbrLocal.includes(this.stockAbbr)) {
+      if (storedStockAbbrLocal && storedStockAbbrLocal.includes(this.stockAbbr)) {
         postData.reset();
         this.SpinnerService.hide();
         return;
