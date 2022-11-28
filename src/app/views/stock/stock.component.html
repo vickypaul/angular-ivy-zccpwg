@@ -60,15 +60,21 @@
               </p>
             </div>
             <div class="short-div div-padding-5">
-              <p class="card-text">Current Price : ${{ stock.stockData.c }}</p>
+              <p class="card-text">
+                Current Price : ${{ stock.stockData.c | number: '1.2-2' }}
+              </p>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="short-div div-padding-5">
-              <p class="card-text">Opening Price : ${{ stock.stockData.o }}</p>
+              <p class="card-text">
+                Opening Price : ${{ stock.stockData.o | number: '1.2-2' }}
+              </p>
             </div>
             <div class="short-div div-padding-5">
-              <p class="card-text">High Price : ${{ stock.stockData.h }}</p>
+              <p class="card-text">
+                High Price : ${{ stock.stockData.h | number: '1.2-2' }}
+              </p>
             </div>
           </div>
           <div class="col-sm-4 div-padding-5" *ngIf="stock.arrowSymbol == 'up'">
