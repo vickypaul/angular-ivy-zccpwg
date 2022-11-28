@@ -30,10 +30,25 @@ export class SentimentComponent implements OnInit {
   getSentimentDetails() {
     this.apiService
       .fetchSentimentDetails(this.stockAbbr)
-      .subscribe((details) => {
+      .subscribe((sentimentDetails) => {
+        if (
+          sentimentDetails['data'].length &&
+          sentimentDetails['data'].length < 3
+        ) {
+          var lastMonth =
+            sentimentDetails['data'][sentimentDetails['data'].length - 1][
+              'month'
+            ];
+          for (let i = sentimentDetails['data'].length + 1; i <= 3; i++) {
+            lastMonth = lastMonth == 12 ? 1 : lastMonth + 1;
+            sentimentDetails['data'][i - 1] = new Object();
+            sentimentDetails['data'][i - 1]['month'] = lastMonth;
+            sentimentDetails['data'][i - 1]['nodatafound'] = 1;
+          }
+        }
         this.isSentimentDataLoaded = true;
         this.SpinnerService.hide();
-        this.sentimentData = details;
+        this.sentimentData = sentimentDetails;
       });
   }
 

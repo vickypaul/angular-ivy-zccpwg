@@ -8,17 +8,25 @@
             <div class="col-sm-2">
               <div class="short-div div-padding-5">
                 <p class="card-text">
-                  {{ getMonth(data.month) | uppercase }}
+                  {{ getMonth(data.month) | uppercase }} {{ data.year }}
                 </p>
               </div>
-              <div class="short-div div-padding-5">
+              <div
+                class="short-div div-padding-5"
+                *ngIf="!data.nodatafound; else other_content"
+              >
                 <p class="card-text">
                   Change :
                   {{ data.change > 0 ? '+' + data.change : data.change }}
                 </p>
               </div>
+              <ng-template #other_content
+                ><div class="short-div div-padding-5">
+                  <p class="card-text">No Data Found</p>
+                </div></ng-template
+              >
               <div class="short-div div-padding-5">
-                <p class="card-text">
+                <p class="card-text" *ngIf="!data.nodatafound">
                   MSPR : {{ data.mspr | number: '1.2-2' }}
                 </p>
               </div>
