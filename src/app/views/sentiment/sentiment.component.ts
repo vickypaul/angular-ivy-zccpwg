@@ -28,9 +28,8 @@ export class SentimentComponent implements OnInit {
   }
 
   getSentimentDetails() {
-    this.apiService
-      .fetchSentimentDetails(this.stockAbbr)
-      .subscribe((sentimentDetails) => {
+    this.apiService.fetchSentimentDetails(this.stockAbbr).subscribe({
+      next: (sentimentDetails) => {
         if (
           sentimentDetails['data'].length &&
           sentimentDetails['data'].length < 3
@@ -49,7 +48,12 @@ export class SentimentComponent implements OnInit {
         this.isSentimentDataLoaded = true;
         this.SpinnerService.hide();
         this.sentimentData = sentimentDetails;
-      });
+      },
+      error: (err) => {
+        this.SpinnerService.hide();
+      },
+      complete: () => {},
+    });
   }
 
   getMonth(monthNumber: number) {

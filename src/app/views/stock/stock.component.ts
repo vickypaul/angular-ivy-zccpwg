@@ -56,8 +56,8 @@ export class StockComponent implements OnInit {
       zip(
         this.apiService.fetchStocks(this.stockAbbr),
         this.apiService.fetchStockName(this.stockAbbr)
-      ).subscribe(
-        ([stockData, stockName]) => {
+      ).subscribe({
+        next: ([stockData, stockName]) => {
           if (stockData.dp > 0) {
             this.arrowSymbolPosition = 'up';
             this.arrowUnicodeSymbol = '&#8593;';
@@ -79,11 +79,12 @@ export class StockComponent implements OnInit {
           postData.reset();
           this.SpinnerService.hide();
         },
-        (error) => {
+        error: (err) => {
           postData.reset();
           this.SpinnerService.hide();
-        }
-      );
+        },
+        complete: () => {},
+      });
     }
   }
 
