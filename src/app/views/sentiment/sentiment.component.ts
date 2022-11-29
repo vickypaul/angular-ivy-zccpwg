@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Sentiment } from '../../models/sentiment.model';
 
 @Component({
   selector: 'app-sentiment',
@@ -10,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class SentimentComponent implements OnInit {
   stockAbbr: string;
-  sentimentData: object;
+  sentimentData: Sentiment;
   isSentimentDataLoaded: boolean = false;
   stockName: string;
   constructor(
@@ -40,7 +41,7 @@ export class SentimentComponent implements OnInit {
             ];
           for (let i = sentimentDetails['data'].length + 1; i <= 3; i++) {
             lastMonth = lastMonth == 12 ? 1 : lastMonth + 1;
-            sentimentDetails['data'][i - 1] = new Object();
+            sentimentDetails['data'][i - 1] = Object.assign({});
             sentimentDetails['data'][i - 1]['month'] = lastMonth;
             sentimentDetails['data'][i - 1]['nodatafound'] = 1;
           }

@@ -1,4 +1,6 @@
+import { SentimentDetails } from './sentimentDetails.model';
+
 export interface Sentiment {
-  data: Array<object>;
-  synbol: string;
+  data: Array<SentimentDetails>;
+  symbol: string;
 }
