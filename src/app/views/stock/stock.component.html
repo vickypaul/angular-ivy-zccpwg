@@ -53,7 +53,7 @@
                 Change Today :
                 {{
                   stock.stockData.dp > 0
-                    ? '+' + stock.stockData.dp
+                    ? '+' + (stock.stockData.dp | number: '1.2-2')
                     : (stock.stockData.dp | number: '1.2-2')
                 }}
                 %
